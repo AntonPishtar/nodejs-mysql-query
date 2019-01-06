@@ -186,6 +186,23 @@ class Database {
       return data
     }
   }
+  static tableInfo(table){
+    let errors = [];
+    if (!table) {
+      errors.push('no table name')
+    }
+
+    let sql = ''
+
+    sql = `DESCRIBE ${table}`
+
+    if (!Database.isEmpty(errors)) {
+      return Database.promise({}, JSON.stringify({
+        errors: errors
+      }));
+    }
+    return Database.query(sql)
+  }
 
   static select(table, select = '*', where = 1, limit = '') {
     let errors = [];
