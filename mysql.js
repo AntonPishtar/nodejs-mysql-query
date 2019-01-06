@@ -183,7 +183,7 @@ class Database {
       }
       return wheres.join(' ')
     } else {
-      return deta
+      return data
     }
   }
 
